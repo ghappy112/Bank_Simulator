@@ -6,13 +6,9 @@ import java.sql.SQLException;
 
 public class DAOUtilities {
 
-	private static final String CONNECTION_USERNAME = "postgres";
-	private static final String CONNECTION_PASSWORD = "gregsql";
-	//private static final String URL = "C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe";
-	//private static final String URL = "jdbc:postgresql://localhost/Bank";
-	private static final String URL = "jdbc:postgresql://localhost:5432/Bank";
-	//private static final String URL = "jdbc:postgresql://localhost:5432/Bank";
-	//"C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe"
+	private static final String CONNECTION_USERNAME = "YOUR_USERNAME";
+	private static final String CONNECTION_PASSWORD = "YOUR_PASSWORD";
+	private static final String URL = "jdbc:postgresql://localhost:0000/Bank";
 	private static Connection connection;
 	
 	public static synchronized Connection getConnection() throws SQLException {
@@ -26,7 +22,6 @@ public class DAOUtilities {
 			connection = DriverManager.getConnection(URL, CONNECTION_USERNAME, CONNECTION_PASSWORD);
 		}
 		
-		//If connection was closed then retrieve a new connection
 		if (connection.isClosed()){
 			System.out.println("Opening new connection...");
 			connection = DriverManager.getConnection(URL, CONNECTION_USERNAME, CONNECTION_PASSWORD);
@@ -34,9 +29,9 @@ public class DAOUtilities {
 		return connection;
 	}
 
-	
-	public static void main(String[] args) throws SQLException {
+	//un-comment the below code to test if u have succesfully connected to the database!!!!!!
+	//public static void main(String[] args) throws SQLException {
 		//connection = DriverManager.getConnection(URL, CONNECTION_USERNAME, CONNECTION_PASSWORD);
-		getConnection();
-	}
+		//getConnection();
+	//}
 }
